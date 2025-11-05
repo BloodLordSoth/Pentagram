@@ -1,7 +1,0 @@
-.vscode/
-.env
-node_modules/
-fileData.db
-assets/
-test.http
-coverage/
