@@ -18,10 +18,10 @@ jobs:
           node-version: 20
 
       - name: clean install
-        uses: npm ci
+        run: npm ci
 
       - name: prettier check
-        uses: npm run prettier:check
+        run: npm run prettier:check
       
       - name: run test
-        uses: npm run test
+        run: npm run test
