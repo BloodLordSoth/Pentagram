@@ -1,0 +1,1 @@
+![badge](https://github.com/BloodLordSoth/Pentagram/actions/workflows/ci.yml/badge.svg)
