@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pentagram - AI Web App</title>
+    <link rel="stylesheet" href="./styles.css"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #111;
+        }
+        #box {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        #left {
+            margin-top: 15px;
+            padding: 5px;
+            border: 1px solid white;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            background: #333;
+            border-radius: 6px;
+        }
+        #prompt {
+            margin-top: 10px;
+            color: white;
+            padding: 10px;
+            height: 100px;
+            resize: none;
+            background: #0000;
+            border-radius: 20px;
+        }
+        #left h2 {
+            text-align: center;
+            font-size: 28px;
+            text-shadow: 1px 1px 4px black;
+        }
+        #btn1 {
+            width: 100px;
+            margin-top: 5px;
+            padding: 5px;
+            border-radius: 20px;
+            background: lightgreen;
+            border: none;
+            align-self: center;
+            box-shadow: 2px 2px 5px black;
+        }
+        #btn1:hover {
+            box-shadow: none;
+            cursor: pointer;
+        }
+        iframe {
+            background: #fff;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+        .cta-button {
+            margin-top: 15px;
+            background-color: #03dac6;
+            color: #121212;
+            padding: 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #018786;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Pentagram</h1>
+        <p>Your AI assistant for creating stunning front-end websites</p>
+    </header>
+
+    <div id="box">
+        <div id="right">
+            <iframe width="500" height="600" src="./nofile.html"></iframe>
+        </div>
+
+        <div id="left">
+            <h2>Prompt</h2>
+            <br>
+            <textarea placeholder="Type your message here..." id="prompt" autocomplete="off"></textarea>
+            <button class="cta-button">Submit</button>
+        </div>
+        
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+name: CI flow
+
+on:
+  pull_request:
+    branch: [ addtests ]
+
+jobs:
+  run_tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: build node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: clean install
+        uses: npm ci
+
+      - name: prettier check
+        uses: npm run prettier:check
+      
+      - name: run test
+        uses: npm run test
