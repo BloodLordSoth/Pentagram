@@ -133,31 +133,30 @@ app.post("/prompt", authenticate, async (req, res, next) => {
   }
 });
 
-app.post('/reprompt/:filename', authenticate, async (req, res, next) => {
-    try {
-        const prompt = req.body.prompt;
-        const username = req.user.name;
-        const filename = req.params.filename
+app.post("/reprompt/:filename", authenticate, async (req, res, next) => {
+  try {
+    const prompt = req.body.prompt;
+    const username = req.user.name;
+    const filename = req.params.filename;
 
-        if (!prompt || !username) throw new UnauthorizedError();
+    if (!prompt || !username) throw new UnauthorizedError();
 
-        const userData = await getUser(username)
+    const userData = await getUser(username);
 
-        if (!userData) throw new NoUserFoundError();
+    if (!userData) throw new NoUserFoundError();
 
-        const file = await getFile(filename)
+    const file = await getFile(filename);
 
-        //throw new nofilefound error if !file
+    //throw new nofilefound error if !file
 
-        const newPrompt = await editGPT(prompt, file.file)
+    const newPrompt = await editGPT(prompt, file.file);
 
-        const updatedPrompt = await updateFile(newPrompt, file.file_name)
-        res.status(200).send({ file: updatedPrompt })
-    }
-    catch (e) {
-        next(e)
-    }
-})
+    const updatedPrompt = await updateFile(newPrompt, file.file_name);
+    res.status(200).send({ file: updatedPrompt });
+  } catch (e) {
+    next(e);
+  }
+});
 
 async function authenticate(req, res, next) {
   const authHeader = req.headers["authorization"];
