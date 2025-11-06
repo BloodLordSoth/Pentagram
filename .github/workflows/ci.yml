@@ -10,6 +10,7 @@ jobs:
     env:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
       AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
+      API_KEY: ${{ secrets.API_KEY }}
 
     steps:
       - name: checkout
