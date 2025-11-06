@@ -2,26 +2,27 @@ name: cd flow
 
 on:
   push:
-    branch: [main]
+    branches: [ main ]   # 👈 should be 'branches', not 'branch'
 
 jobs:
-  depoly:
-  runs-on: Ubuntu-latest
-  env:
-    DEPLOY_HOOK: ${{ secrets.DEPLOY_HOOK }}
+  deploy:                # 👈 typo fixed: 'depoly' → 'deploy'
+    runs-on: ubuntu-latest  # 👈 lowercase 'ubuntu-latest'
 
-  steps:
-    - name: checkout
-      uses: actions/checkout@v4
+    env:
+      DEPLOY_HOOK: ${{ secrets.DEPLOY_HOOK }}
 
-    - name: build node
-      uses: actions/setup-node@v4
-      with:
-        node-version: 20
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
 
-    - name: clean install
-      run: npm ci
+      - name: build node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-    - name: deploy to render
-      run: |
-        curl -X POST $DEPLOY_HOOK
+      - name: clean install
+        run: npm ci
+
+      - name: deploy to render
+        run: |
+          curl -X POST "$DEPLOY_HOOK"
