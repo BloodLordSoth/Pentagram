@@ -1,0 +1,27 @@
+name: cd flow
+
+on:
+  push:
+    branch: [main]
+
+jobs:
+  depoly:
+  runs-on: Ubuntu-latest
+  env:
+    DEPLOY_HOOK: ${{ secrets.DEPLOY_HOOK }}
+
+  steps:
+    - name: checkout
+      uses: actions/checkout@v4
+
+    - name: build node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+
+    - name: clean install
+      run: npm ci
+
+    - name: deploy to render
+      run: |
+        curl -X POST $DEPLOY_HOOK
