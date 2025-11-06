@@ -37,7 +37,7 @@ async function registerUser() {
         return
     }
 
-    const data = await red.json()
+    const data = await res.json()
     localStorage.setItem('Username', data.username)
     window.location.href = './login.html'
 }

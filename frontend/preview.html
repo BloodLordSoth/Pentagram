@@ -24,7 +24,7 @@
             flex-direction: column;
         }
         #left {
-            margin-top: 15px;
+            margin-top: 30px;
             padding: 5px;
             border: 1px solid white;
             color: white;
@@ -34,7 +34,7 @@
             border-radius: 6px;
         }
         #prompt {
-            margin-top: 10px;
+            margin-top: 20px;
             color: white;
             padding: 10px;
             height: 100px;
@@ -90,6 +90,26 @@
         #clear {
             display: none;
         }
+        #footbox {
+            display: flex;
+            flex-direction: column;
+        }
+        .cta-button2 {
+            margin-top: 30px;
+            background-color: #fff;
+            color: #111;
+            padding: 15px;
+            font-size: 16px;
+            border: none;
+            width: 30%;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .cta-button2:hover {
+            background-color: #000;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -105,18 +125,21 @@
         </div>
 
         <div id="left">
-            <h2>Prompt</h2>
+            <h2>Ask Pentagram</h2>
             <br>
-            <textarea placeholder="Type your message here..." id="prompt" autocomplete="off"></textarea>
-            <button id="submit" class="cta-button">Send Prompt</button>
+            <textarea placeholder="Explain how you want your webpage to look..." id="prompt" autocomplete="off"></textarea>
+            <button id="submit" class="cta-button">Generate Webpage</button>
             <button id="continue" class="cta-button">Continue</button>
             <button id="download" class="cta-button">Download</button>
             <button id="clear" class="cta-button">Start Over</button>
         </div>
     </div>
 
+    <button id="logout" class="cta-button2">Logout</button>
     <footer>
-        &copy; 2025 Pentagram. All rights reserved.
+        <div id="footbox">
+            &copy; 2025 Pentagram. All rights reserved.
+        </div>
     </footer>
 
 </body>

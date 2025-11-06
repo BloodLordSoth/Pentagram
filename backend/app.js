@@ -11,9 +11,9 @@ import {
   NoUserFoundError,
 } from "./errors.js";
 import { hashPass, checkHash } from "./auth.js";
-import { createUser, getUser, createFile, getFile } from "./db.js";
+import { createUser, getUser, createFile, getFile, updateFile } from "./db.js";
 import jwt from "jsonwebtoken";
-import { callGPT } from "../shared/ai.js";
+import { callGPT, editGPT } from "../shared/ai.js";
 import crypto from "crypto";
 
 dotenv.config();
@@ -69,7 +69,7 @@ app.get("/users/:filename", async (req, res, next) => {
     if (!file) throw new UnauthorizedError();
 
     const dirFile = await getFile(file);
-    res.status(200).send(dirFile);
+    res.status(200).send(dirFile.file);
   } catch (e) {
     next(e);
   }
@@ -107,7 +107,7 @@ app.get("/download/:file", authenticate, async (req, res, next) => {
     if (!file) throw new NotFoundError();
 
     res.set("Content-Disposition", 'attachment; filename="index.html"');
-    res.status(200).send({ file: file });
+    res.status(200).send({ file: file.file });
   } catch (e) {
     next(e);
   }
@@ -132,6 +132,32 @@ app.post("/prompt", authenticate, async (req, res, next) => {
     next(e);
   }
 });
+
+app.post('/reprompt/:filename', authenticate, async (req, res, next) => {
+    try {
+        const prompt = req.body.prompt;
+        const username = req.user.name;
+        const filename = req.params.filename
+
+        if (!prompt || !username) throw new UnauthorizedError();
+
+        const userData = await getUser(username)
+
+        if (!userData) throw new NoUserFoundError();
+
+        const file = await getFile(filename)
+
+        //throw new nofilefound error if !file
+
+        const newPrompt = await editGPT(prompt, file.file)
+
+        const updatedPrompt = await updateFile(newPrompt, file.file_name)
+        res.status(200).send({ file: updatedPrompt })
+    }
+    catch (e) {
+        next(e)
+    }
+})
 
 async function authenticate(req, res, next) {
   const authHeader = req.headers["authorization"];

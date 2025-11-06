@@ -1,4 +1,5 @@
 const submit = document.getElementById('submit')
+const logoutbtn = document.getElementById('logout')
 const clear = document.getElementById('clear')
 const continuePrompt = document.getElementById('continue')
 const download = document.getElementById('download')
@@ -109,8 +110,34 @@ download.addEventListener('mousedown', async () => {
     a.click()
 })
 
-continuePrompt.addEventListener('mousedown', () => {
-    const reprompt = aiprompt.value
+continuePrompt.addEventListener('mousedown', async () => {
+    if (aiprompt.value.length === 0) {
+        alert('No prompt has been provided')
+        return
+    }
+
+    if (aiprompt.value.length < 15) {
+        alert('You need to provide more context.')
+        return
+    }
+
+    const filename = localStorage.getItem('userFile')
+
+    const res = await fetch(`/reprompt/${filename}`, {
+        method: "POST",
+        headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: aiprompt.value })
+    })
+
+    if (!res.ok) {
+        const error = await res.json()
+        alert(error.message)
+        return
+    }
+
+    const data = await res.json()
+    target.src = data.file
+    window.location.reload()
 })
 
 clear.addEventListener('mousedown', () => {
@@ -119,4 +146,9 @@ clear.addEventListener('mousedown', () => {
     continuePrompt.style.display = 'none'
     download.style.display = 'none'
     submit.style.display = 'block'
+    localStorage.removeItem('userFile')
+})
+
+logoutbtn.addEventListener('mousedown', () => {
+    logout()
 })

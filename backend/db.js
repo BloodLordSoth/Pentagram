@@ -31,5 +31,13 @@ export async function getFile(filename) {
     filename,
   ]);
 
-  return stmt.rows[0].file;
+  return stmt.rows[0];
+}
+
+export async function updateFile(file, filename) {
+  const stmt = await db.execute("UPDATE files SET file = ? WHERE file_name = ? RETURNING *", 
+    [file, filename]
+);
+
+  return stmt.rows[0];
 }
