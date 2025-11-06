@@ -11,6 +11,7 @@ jobs:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
       AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
       API_KEY: ${{ secrets.API_KEY }}
+      ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
     steps:
       - name: checkout
