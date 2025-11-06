@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pentagram - AI-Powered Frontend Design</title>
+    <link rel="stylesheet" href="./styles.css"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #111;
+        }
+        #box {
+            margin-top: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 25px;
+            background: #222;
+            width: 350px;
+            height: 280px;
+        }
+        #box h2 {
+            color: white;
+            text-align: center;
+            font-size: 32px;
+            text-shadow: 2px 2px 5px black;
+        }
+        label[for=username] {
+            color: white;
+            margin-top: 10px;
+            text-shadow: 2px 2px 5px black;
+        }
+        label[for=password] {
+            color: white;
+            margin-top: 25px;
+            text-shadow: 2px 2px 5px black;
+        }
+        #username {
+            margin-top: 5px;
+            padding: 3px;
+        }
+        #password {
+            margin-top: 5px;
+            padding: 3px;
+        }
+        #btn1 {
+            margin-top: 30px;
+            padding: 3px;
+        }
+        .cta-button {
+            margin-top: 15px;
+            background-color: #03dac6;
+            color: #121212;
+            padding: 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #018786;
+            color: #fff;
+        }
+        #box2 {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #222;
+            width: 350px;
+            height: 80px;
+            color: white;
+            text-align: center;
+            border-radius: 7px;
+        }
+        #box2 a {
+            margin-top: 5px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #03dac6;
+        }
+        #box2 a:hover {
+            color: #018786;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Pentagram</h1>
+        <p>Your AI assistant for creating stunning front-end websites</p>
+    </header>
+
+    <div id="box">
+        <h2>Login</h2>
+        <label for="username">Username</label>
+        <input id="username" type="text" autocomplete="off" placeholder="Username"/>
+        <label for="password">Password</label>
+        <input id="password" type="password" autocomplete="off" placeholder="Password"/>
+        <button class="cta-button" id="btn1">Submit</button>
+    </div>
+
+    <div id="box2">
+        <p>Not yet a member?</p>
+        <a href="./register.html">Create an account</a>
+    </div>
+
+</body>
+</html>
+<script src="./login.js"></script>

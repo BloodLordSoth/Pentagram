@@ -81,6 +81,15 @@
             background-color: #018786;
             color: #fff;
         }
+        #download {
+            display: none;
+        }
+        #continue {
+            display: none;
+        }
+        #clear {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -92,17 +101,24 @@
 
     <div id="box">
         <div id="right">
-            <iframe width="500" height="600" src="./nofile.html"></iframe>
+            <iframe id="target" width="500" height="600" src="./nofile.html"></iframe>
         </div>
 
         <div id="left">
             <h2>Prompt</h2>
             <br>
             <textarea placeholder="Type your message here..." id="prompt" autocomplete="off"></textarea>
-            <button class="cta-button">Submit</button>
+            <button id="submit" class="cta-button">Send Prompt</button>
+            <button id="continue" class="cta-button">Continue</button>
+            <button id="download" class="cta-button">Download</button>
+            <button id="clear" class="cta-button">Start Over</button>
         </div>
-        
     </div>
+
+    <footer>
+        &copy; 2025 Pentagram. All rights reserved.
+    </footer>
 
 </body>
 </html>
+<script src="preview.js"></script>
