@@ -26,13 +26,12 @@ Instantly generate responsive layouts and components with intelligent defaults, 
 - Included: within the root is pentagram.js the CLI REPL tool.
 ```
 
-## Contributing
+## Contributing/Cloning
 
 ### Clone the repo
 
 ```bash
-git clone https://github.com/BloodLordSoth/ecommerce
-cd ecommerce
+git clone https://github.com/BloodLordSoth/pentagram
 ```
 
 ### Build the compiled binary
@@ -46,6 +45,9 @@ npm install
 ```bash
 npm run pentagram (CLI)
 npm run dev (dev server)
+
+- You will need a openAI API key for the CLI REPL.
+- Store in .env API_KEY=yourAPIkeyhere
 ```
 
 ### CLI commands
